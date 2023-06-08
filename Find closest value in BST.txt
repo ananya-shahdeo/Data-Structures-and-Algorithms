@@ -1,0 +1,41 @@
+Find closest value in BST
+
+O(log(n))|O(1) space
+
+import java.util.*;
+
+class Program {
+  public static int findClosestValueInBst(BST tree, int target) {
+    // Write your code here.
+    int diff=Integer.MAX_VALUE; 
+    int closest=-1;
+    return findvalue(tree,target,diff,closest);
+  }
+    public static int findvalue(BST tree,int target,int diff,int closest){
+    while(tree!=null){
+     int currdiff=Math.abs(tree.value-target);
+      if (currdiff<diff){
+        diff=currdiff;
+        closest=tree.value;
+      }
+      if(tree.value==target) return tree.value;
+      else if(tree.value>target){
+        return findvalue(tree.left,target,diff,closest);
+      }
+      else return findvalue(tree.right,target,diff,closest);
+    }
+    
+    return closest;
+    }
+  
+
+  static class BST {
+    public int value;
+    public BST left;
+    public BST right;
+
+    public BST(int value) {
+      this.value = value;
+    }
+  }
+}
