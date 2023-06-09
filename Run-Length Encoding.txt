@@ -1,0 +1,23 @@
+Run-Length Encoding
+
+O(n) Time||O(n) Space
+
+import java.util.*;
+
+class Program {
+  public String runLengthEncoding(String string) {
+    // Write your code here.
+    int count=0;String result="";
+    for(int i=0;i<string.length();i++){
+      count++;
+      if(i+1==string.length()){
+        result+=count+""+string.charAt(i);
+      }
+      else if(string.charAt(i)!=string.charAt(i+1) || count==9){
+        result+=count+""+string.charAt(i);
+        count=0;
+      } 
+    }      
+    return result;
+  }
+}
